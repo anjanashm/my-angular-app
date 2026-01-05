@@ -1,5 +1,4 @@
 export interface Ride {
-  id: string;
   ownerEmployeeId: string;
   vehicleType: 'Bike' | 'Car';
   vehicleNo: string;

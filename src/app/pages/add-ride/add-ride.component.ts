@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { RideService } from '../../services/ride.service';
 
 @Component({
   selector: 'add-ride',
@@ -10,11 +11,9 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 })
 export class AddRideComponent {
 
-  @Output() rideAdded = new EventEmitter<any>();
-
   addRideForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private rideService: RideService) {
     this.addRideForm = this.fb.group({
       employeeId: ['', Validators.required],
       vehicleType: ['', Validators.required],
@@ -33,7 +32,6 @@ export class AddRideComponent {
     }
 
     const newRide = {
-      id: crypto.randomUUID(),
       ownerEmployeeId: this.addRideForm.value.employeeId,
       vehicleType: this.addRideForm.value.vehicleType,
       vehicleNo: this.addRideForm.value.vehicleNo,
@@ -44,10 +42,8 @@ export class AddRideComponent {
       bookedEmployeeIds: []
     };
 
-    // Emit ride to parent or service
-    this.rideAdded.emit(newRide);
+    this.rideService.allAvailableRides.push(newRide);
 
-    // Reset form
     this.addRideForm.reset({
       vacantSeats: 1
     });

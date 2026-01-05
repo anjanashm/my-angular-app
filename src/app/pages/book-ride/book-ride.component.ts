@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RideService } from '../../services/ride.service';
 
 @Component({
   selector: 'book-ride',
@@ -10,18 +11,16 @@ import { FormsModule } from '@angular/forms';
 })
 export class BookRideComponent {
 
- @Input() allBookedEmployeeIds!: string[];
-
-  @Output() rideBooked = new EventEmitter<string>();
+  constructor(private rideService: RideService) {}
 
   employeeId: string = '';
 
+
  get isBookRideInvalid() {
-  return !this.employeeId || this.allBookedEmployeeIds?.includes(this.employeeId);
+  return !this.employeeId || this.rideService.allBookedEmployeeIds?.includes(this.employeeId);
 }
 
   bookRide() {  
-    this.rideBooked.emit(this.employeeId);
-    console.log(this.employeeId);
+    this.rideService.allBookedEmployeeIds.push(this.employeeId);
   }
 }
