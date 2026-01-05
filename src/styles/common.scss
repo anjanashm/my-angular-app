@@ -1,0 +1,35 @@
+.card {
+  max-width: 500px;
+  margin: 16px auto;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+input, select {
+  padding: 6px;
+  font-size: 14px;
+}
+
+button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.ride-card {
+  border: 1px solid #7a7474;
+  padding: 12px;
+  margin: 12px auto;
+  max-width: 500px;
+}
+
+.ride-header {
+  display: flex;
+  justify-content: space-between;
+}

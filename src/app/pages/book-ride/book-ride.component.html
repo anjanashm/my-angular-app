@@ -1,0 +1,13 @@
+<div class="card">
+  <h3>Book Ride</h3>
+
+  <label>
+    Employee ID
+    <input [(ngModel)]="employeeId">
+  </label>
+
+  <button [disabled]="isBookRideInvalid" (click)="bookRide()">
+    Confirm Booking
+  </button>
+
+</div>
