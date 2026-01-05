@@ -2,6 +2,8 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.1.
 
+This is an initial version of an employee travel booking app. Although it is not a complete solution, it is a start to a well running application
+
 ## Development server
 
 To start a local development server, run:
